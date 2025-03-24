@@ -1,5 +1,5 @@
-# GenieACS Ubuntu 22.04
-Script autoinstall GenieACS For ubuntu version 22.04 (Jammy) & 
+# GenieACS Autoinstall Script
+Script autoinstall GenieACS For Ubuntu version 22.04 (Jammy) & STB Armbian (Bookworm)
 
 # Installation
 ```
@@ -8,7 +8,7 @@ sudo su
 ```
 sudo apt-get install dos2unix
 ```
-Ubuntu 22.04 (Jammy)
+#Ubuntu 22.04 (Jammy)
 ```
 wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-jammy-install.sh
 ```
@@ -21,7 +21,7 @@ dos2unix gacs-jammy-install.sh
 ```
 bash gacs-jammy-install.sh
 ```
-STB Armbian (Bookworm)
+#STB Armbian (Bookworm)
 ```
 wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-armbian-bookworm.sh
 ```
