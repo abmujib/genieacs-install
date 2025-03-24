@@ -5,19 +5,15 @@ Script autoinstall GenieACS For ubuntu version 22.04 (Jammy) &
 ```
 sudo su
 ```
+```
+sudo apt-get install dos2unix
+```
 Ubuntu 22.04 (Jammy)
 ```
 wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-jammy-install.sh
 ```
-STB Armbian (Bookworm)
-```
-wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-armbian-bookworm.sh
-```
 ```
 chmod +x gacs-jammy-install.sh
-```
-```
-sudo apt-get install dos2unix
 ```
 ```
 dos2unix gacs-jammy-install.sh
@@ -25,7 +21,19 @@ dos2unix gacs-jammy-install.sh
 ```
 bash gacs-jammy-install.sh
 ```
-
+STB Armbian (Bookworm)
+```
+wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-armbian-bookworm.sh
+```
+```
+chmod +x gacs-armbian-bookworm.sh
+```
+```
+dos2unix gacs-armbian-bookworm.sh
+```
+```
+bash gacs-armbian-bookworm.sh
+```
 
 # Download SSL
 ```
