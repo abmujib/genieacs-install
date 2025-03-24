@@ -98,7 +98,7 @@ run_command "echo 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu 
 
 run_command "apt-get update -y" "Updating package list ($(( ++current_step ))/$total_steps)"
 
-run_command "apt-get install mongodb-org -y" "Installing MongoDB ($(( ++current_step ))/$total_steps)"
+run_command "apt-get install mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8 -y" "Installing MongoDB ($(( ++current_step ))/$total_steps)"
 
 run_command "apt-get upgrade -y" "Upgrading system ($(( ++current_step ))/$total_steps)"
 
