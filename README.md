@@ -1,12 +1,17 @@
 # GenieACS Ubuntu 22.04
-Script autoinstall GenieACS For ubuntu version 22.04 (Jammy)
+Script autoinstall GenieACS For ubuntu version 22.04 (Jammy) & 
 
 # Installation
 ```
 sudo su
 ```
+Ubuntu 22.04 (Jammy)
 ```
-wget https://raw.githubusercontent.com/abmujib/genieacs-ubuntu-22.04/main/gacs-jammy-install.sh
+wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-jammy-install.sh
+```
+STB Armbian (Bookworm)
+```
+wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-armbian-bookworm.sh
 ```
 ```
 chmod +x gacs-jammy-install.sh
