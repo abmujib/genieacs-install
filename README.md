@@ -1,7 +1,7 @@
 # GenieACS Autoinstall Script
 Script autoinstall GenieACS For Ubuntu version 22.04 (Jammy) & STB Armbian (Bookworm)
 
-Armbian 25.5.0-trunk.256_Aml-s9xx-box_bookworm_current_6.12.19 [download](disini)
+OS Armbian 25.5.0 Aml-s9xx Bookworm [Download](https://www.mediafire.com/file/nvcyhas55f4y2i2/Armbian_community_25.5.0-trunk.256_Aml-s9xx-box_bookworm_current_6.12.19.img.xz/file)
 
 # Installation
 ```
