@@ -10,6 +10,7 @@ sudo su
 ```
 sudo apt-get install dos2unix
 ```
+
 # Ubuntu 22.04 (Jammy)
 ```
 wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-jammy-install.sh
@@ -23,6 +24,7 @@ dos2unix gacs-jammy-install.sh
 ```
 bash gacs-jammy-install.sh
 ```
+
 # STB Armbian (Bookworm)
 ```
 wget https://raw.githubusercontent.com/abmujib/genieacs-install/main/gacs-armbian-bookworm.sh
