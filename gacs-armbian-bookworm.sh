@@ -50,14 +50,14 @@ print_banner() {
 	echo "  \____/_/   \_\____|____/   |____/ \___|_|  |_| .__/ \__|"
 	echo "                                               |_|        "
 	echo ""
-	echo "                  ---  Armbian 25.5.0-trunk.288 (Bookworm) ---"
-	echo "                  --- abmujib ---"
+	echo "                  --- Armbian 25.5.0-trunk.288 (Bookworm) ---"
+	echo "                  --- github.com/abmujib ---"
 	echo -e "${NC}"
 }
 
 # Check for root access
 if [ "$EUID" -ne 0 ]; then
-    echo -e "\e[31mThis script must be run as root\e[0m"
+    echo -e "${RED}This script must be run as root${NC}"
     exit 1
 fi
 
@@ -67,34 +67,38 @@ if [ "$(lsb_release -cs)" != "bookworm" ]; then
     exit 1
 fi
 
-# Print banner (Assuming print_banner function exists)
+# Print banner
 print_banner
 
 # Main installation process
 total_steps=25
 current_step=0
 
-echo -e "\n\e[35;1mStarting GenieACS Installation Process\e[0m\n"
+echo -e "\n${MAGENTA}${BOLD}Starting GenieACS Installation Process${NC}\n"
 
 run_command "apt-get update -y" "Updating system ($(( ++current_step ))/$total_steps)"
 
-run_command "sed -i 's/#\$nrconf{restart} = \"i\";/\$nrconf{restart} = \"a\";/g' /etc/needrestart/needrestart.conf" "Configuring needrestart ($(( ++current_step ))/$total_steps)"
+run_command "sed -i 's/#\$nrconf{restart} = '"'"'i'"'"';/\$nrconf{restart} = '"'"'a'"'"';/g' /etc/needrestart/needrestart.conf" "Configuring needrestart ($(( ++current_step ))/$total_steps)"
 
 run_command "apt install -y nodejs" "Installing NodeJS ($(( ++current_step ))/$total_steps)"
 
 run_command "apt install -y npm" "Installing NPM ($(( ++current_step ))/$total_steps)"
 
-run_command "apt install -y libssl-dev" "Installing libssl ($(( ++current_step ))/$total_steps)"
+run_command "wget http://ports.ubuntu.com/pool/main/o/openssl/openssl_1.1.1f-1ubuntu2_arm64.deb" "Downloading package SSL ($(( ++current_step ))/$total_steps)"
 
-run_command "apt install -y gnupg" "Installing GnuPG ($(( ++current_step ))/$total_steps)"
+run_command "wget http://ports.ubuntu.com/pool/main/o/openssl/libssl-dev_1.1.1f-1ubuntu2_arm64.deb" "Downloading package SSL ($(( ++current_step ))/$total_steps)"
 
-run_command "curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc | gpg --dearmor -o /usr/share/keyrings/mongodb-keyring.gpg" "Adding MongoDB key ($(( ++current_step ))/$total_steps)"
+run_command "wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb" "Downloading package SSL ($(( ++current_step ))/$total_steps)"
 
-run_command "echo 'deb [signed-by=/usr/share/keyrings/mongodb-keyring.gpg] https://repo.mongodb.org/apt/debian bookworm/mongodb-org/6.0 main' | tee /etc/apt/sources.list.d/mongodb-org-6.0.list" "Adding MongoDB repository ($(( ++current_step ))/$total_steps)"
+run_command "sudo dpkg -i *.deb" "Installing package SSL ($(( ++current_step ))/$total_steps)"
+
+run_command "curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -" "Adding MongoDB key ($(( ++current_step ))/$total_steps)"
+
+run_command "echo 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-4.4.list" "Adding MongoDB repository ($(( ++current_step ))/$total_steps)"
 
 run_command "apt-get update -y" "Updating package list ($(( ++current_step ))/$total_steps)"
 
-run_command "apt-get install -y mongodb-org" "Installing MongoDB ($(( ++current_step ))/$total_steps)"
+run_command "apt-get install mongodb-org -y" "Installing MongoDB ($(( ++current_step ))/$total_steps)"
 
 run_command "apt-get upgrade -y" "Upgrading system ($(( ++current_step ))/$total_steps)"
 
